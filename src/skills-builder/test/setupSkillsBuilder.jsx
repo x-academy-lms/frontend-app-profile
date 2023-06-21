@@ -11,14 +11,8 @@ jest.mock('@edx/frontend-platform/logging');
 jest.mock('react-instantsearch-hooks-web', () => ({
   // eslint-disable-next-line react/prop-types
   InstantSearch: ({ children }) => (<div>{children}</div>),
-  Configure: jest.fn(() => (null)),
   useSearchBox: jest.fn(() => ({ refine: jest.fn() })),
   useHits: jest.fn(() => ({ hits: mockData.hits })),
-}));
-
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useLocation: jest.fn(() => ({ search: '?query_string=values' })),
 }));
 
 jest.mock('../utils/search', () => ({

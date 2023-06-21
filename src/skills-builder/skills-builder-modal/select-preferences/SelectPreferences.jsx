@@ -27,7 +27,7 @@ const SelectPreferences = () => {
           <JobTitleSelect />
         )}
 
-        {currentGoal && currentJobTitle && (
+        {currentJobTitle && (
           <CareerInterestSelect />
         )}
       </Stack>

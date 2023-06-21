@@ -1,14 +1,11 @@
-export const COURSE = 'course';
-const BOOT_CAMP = 'boot_camp';
-const EXECUTIVE_EDUCATION = 'executive_education';
-const DEGREE = '2U_degree';
-const PROGRAM = 'program';
+const COURSE = 'course';
 
-// This array is used to determine the validity of product types as they are passed through the query string
+/* The below strings can be used to demonstrate how we are able to retrieve recommendations for other product types
+const BOOT_CAMP = 'boot camp';
+const EXECUTIVE_EDUCATION = 'executive education';
+*/
+
+// eslint-disable-next-line import/prefer-default-export
 export const productTypes = [
-  DEGREE,
-  BOOT_CAMP,
-  EXECUTIVE_EDUCATION,
-  PROGRAM,
   COURSE,
 ];

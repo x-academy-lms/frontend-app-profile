@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
 import { getConfig } from '@edx/frontend-platform';
 import { useIntl } from '@edx/frontend-platform/i18n';
-import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import {
   Stack, Row, Col, Form,
 } from '@edx/paragon';
-import { Configure, InstantSearch } from 'react-instantsearch-hooks-web';
+import { InstantSearch } from 'react-instantsearch-hooks-web';
 import JobTitleInstantSearch from './JobTitleInstantSearch';
 import CareerInterestCard from './CareerInterestCard';
 import { addCareerInterest } from '../../data/actions';
@@ -21,17 +20,6 @@ const CareerInterestSelect = () => {
   const handleCareerInterestSelect = (value) => {
     if (!careerInterests.includes(value) && careerInterests.length < 3) {
       dispatch(addCareerInterest(value));
-
-      sendTrackEvent(
-        'edx.skills_builder.career_interest.added',
-        {
-          app_name: 'skills_builder',
-          category: 'skills_builder',
-          learner_data: {
-            career_interest: value,
-          },
-        },
-      );
     }
   };
 
@@ -42,11 +30,9 @@ const CareerInterestSelect = () => {
           {formatMessage(messages.careerInterestPrompt)}
         </h4>
         <InstantSearch searchClient={searchClient} indexName={getConfig().ALGOLIA_JOBS_INDEX_NAME}>
-          <Configure filters="b2c_opt_in:true" />
           <JobTitleInstantSearch
             onSelected={handleCareerInterestSelect}
             placeholder={formatMessage(messages.careerInterestInputPlaceholderText)}
-            data-testid="career-interest-select"
           />
         </InstantSearch>
       </Form.Label>
